@@ -660,7 +660,6 @@ function WoDObjects.Interact()
 			for i = 1, ObjectCount() do
 				local curObj = ObjectWithIndex(i)
 				if tContains(WoDObjectsTanaanJungle, ObjectName(curObj)) and WoDObjects.Distance(curObj) <= 8 then
-					print("Found treasure!")
 					C_Timer.After(1, function() ObjectInteract(curObj) end)
 					return
 				end
