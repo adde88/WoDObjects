@@ -1,7 +1,7 @@
-## Interface: 60000
+## Interface: 60200
 ## Title: WoDObjects
 ## Notes: WoD Objects Auto Interaction
-## Author: StinkyTwitch, G1zStar
+## Author: StinkyTwitch, G1zStar, Zylla
 ## Version: 1.0
 
 WoDObjects.lua
