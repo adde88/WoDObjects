@@ -6,6 +6,7 @@ Credits:
 G1zStar, based entirely on his code that he was awesome enough to share with me. I just reformatted
 it and made it into a stand alone AddOn.
 StinkyTwitch.
+Added Tanaan Jungle Treasures (Patch 6.2): Zylla
 
 Usage:
 At a command line type /wodobj or put "/wodobj" into a macro. This will toggle the AddOn to go from
@@ -39,6 +40,25 @@ local WoDObjectsTanaan = {
 	"Makeshift Plunger",
 	"Worldbreaker Side Turret",
 	"Main Cannon Trigger",
+}
+
+local WoDObjectsTanaanJungle = {
+	"Radiating Apexis Shard",
+	"Suspiciously Glowing Chest",
+	"Gleaming Draenic Chest",
+	"Axe of the Weeping Wolf",
+	"Dead Man's Chest",
+	"Eye Holder",
+	"Jewel of Hellfire",
+	"Looted Treasures",
+	"Polished Crystal",
+	"Spoils of War",
+	"Stolen Captain's Chest",
+	"Strange Sapphire",
+	"The Blade of Kra'nak",
+	"The Eye of Grannok",
+	"Tome of Secrets",
+	"Looted Bleeding Hollow Treasure",
 }
 
 local WoDObjectsAshran = {
@@ -632,6 +652,20 @@ function WoDObjects.Interact()
 				end
 			end
 		end
+		
+		--[[
+		Tanaan Jungle (New in 6.2) (ID: 11)
+		--]]
+		if GetCurrentMapZone() == 11 then
+			for i = 1, ObjectCount() do
+				local curObj = ObjectWithIndex(i)
+				if tContains(WoDObjectsTanaanJungle, ObjectName(curObj)) and WoDObjects.Distance(curObj) <= 8 then
+					print("Found treasure!")
+					C_Timer.After(1, function() ObjectInteract(curObj) end)
+					return
+				end
+			end
+		end
 	end			
 end
 
@@ -724,23 +758,3 @@ This runs the AddOns check once ever second till a Lua error happens or its turn
 C_Timer.NewTicker( 1, function() WoDObjectsRun() end )
 
 WoDObjects_Initialize()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
